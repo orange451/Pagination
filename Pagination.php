@@ -160,5 +160,27 @@
 			
 			return $pageIndex - 1 >= $this->getFirstPage();
 		}
+		
+		/**
+		* Returns the previous page from the current page.
+		*/
+		function getPreviousPage() {
+			$Page = $this->getCurrentPage()-1;
+			if ( $Page < $this->getFirstPage() )
+				$Page = $this->getFirstPage();
+			
+			return $Page;
+		}
+		
+		/**
+		* Returns the next page from the current page.
+		*/
+		function getNextPage() {
+			$Page = $this->getCurrentPage()+1;
+			if ( $Page > $this->getLastPage() )
+				$Page = $this->getLastPage();
+			
+			return $Page;
+		}
 	}
 ?>
