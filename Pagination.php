@@ -99,7 +99,7 @@
 		* Example sql/php: select * from employees LIMIT {getElementsPerPage()} {getDataOffset()}
 		*/
 		function getDataOffset() {
-			return $this->getElementsPerPage() * $this->getCurrentPage();
+			return $this->getElementsPerPage() * ($this->getCurrentPage()-1);
 		}
 		
 		/**
