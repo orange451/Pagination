@@ -76,18 +76,25 @@
 		* Returns the local range of pages around your pagination. Example: [1, 2, CURRENT(3), 4, 5].
 		*/
 		function getLocalPageRange() {
+			$leftRemoved = 0;
 			$leftIndex = $this->getCurrentPage() - $this->getBoundaryPages();
-			if ( $leftIndex < $this->getFirstPage() )
+			if ( $leftIndex < $this->getFirstPage() ) {
+				$leftRemoved = abs($leftIndex-$this->getFirstPage());
 				$leftIndex = $this->getFirstPage();
+			}
 			
+			$rightRemoved = 0;
 			$rightIndex = $this->getCurrentPage() + $this->getBoundaryPages();
-			if ( $rightIndex > $this->getLastPage() )
+			if ( $rightIndex > $this->getLastPage() ) {
+				$rightRemoved = abs($rightIndex-$this->getLastPage());
 				$rightIndex = $this->getLastPage();
+			}
 			
-			$len = $rightIndex - $leftIndex;
+			$leftIndex -= $rightRemoved;
+			$rightIndex += $leftRemoved;
 			
 			$array = [];
-			for ($i = 0; $i <= $len; $i++ ) {
+			for ($i = 0; $i <= ($rightIndex - $leftIndex); $i++ ) {
 				$array[$i] = $leftIndex + $i;
 			}
 			
@@ -131,6 +138,27 @@
 		*/
 		function isOnLastPage() {
 			$this->getCurrentPage() == $this->getLastPage();
+		}
+		
+		/**
+		* Returns if the specified page has a next page.
+		*/
+		function hasNextPage($pageIndex) {
+			if ( !isset($pageIndex) )
+				$pageIndex = $this->getCurrentPage();
+			
+			return $pageIndex + 1 <= $this->getLastPage();
+		}
+		
+		
+		/**
+		* Returns if the specified page has a previous page.
+		*/
+		function hasPreviousPage($pageIndex) {
+			if ( !isset($pageIndex) )
+				$pageIndex = $this->getCurrentPage();
+			
+			return $pageIndex - 1 >= $this->getFirstPage();
 		}
 	}
 ?>
