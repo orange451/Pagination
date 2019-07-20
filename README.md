@@ -2,7 +2,8 @@
 Simple Pagination Utility for PHP
 
 # Example
-`<?php
+`
+<?php
 	// Include Pagination
 	include("util/pagination.php");
 	
@@ -59,4 +60,5 @@ Simple Pagination Utility for PHP
 	}
 	echo("<a href='members.php?p=".$Paginator->getLastPage()."'>Last </a>");
 	echo("</div>");
-?>`
+?>
+`
