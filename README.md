@@ -30,14 +30,14 @@ Simple Pagination Utility for PHP
 	
 	// Setup paginator
 	$Paginator = new Pagination();
-	$Paginator->setElementsPerPage(5); // 5 elements per page.
-	$Paginator->setBoundaryPages(2); // 2 pages to the left/right of current page.
-	$Paginator->setTotalElements(count($Elements)); // Total # elements for paging.
+	$Paginator->setElementsPerPage(5);
+	$Paginator->setBoundaryPages(2);
+	$Paginator->setTotalElements(count($Elements));
 	$Paginator->setCurrentPage($CurrentPage);
 	
 	// Display Page elements
-	$DataOffset = $Paginator->getDataOffset(); // Offset so we know where to start querrying Elements
-	$ElementsPerPage = $Paginator->getElementsPerPage(); // How many elements we want to display per page
+	$DataOffset = $Paginator->getDataOffset();
+	$ElementsPerPage = $Paginator->getElementsPerPage();
 	for ( $i = 0; $i < $ElementsPerPage; $i++ ) {
 		$index = $i + $DataOffset;
 		
