@@ -1,7 +1,7 @@
 # Pagination
 Simple Pagination Utility for PHP
 
-# Example
+# Small Example
 ```
 <?php
 	// Include Pagination
